@@ -1,5 +1,6 @@
 package com.example.mysolelife.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.mysolelife.R
+import com.example.mysolelife.contentsList.ContentListActivity
 import com.example.mysolelife.databinding.FragmentTipBinding
 
 class TipFragment : Fragment() {
@@ -29,6 +31,21 @@ class TipFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_tip, container, false)
 
         //binding 클릭 이벤트
+
+        // 카테고리1 버튼 클릭시 이벤트
+        binding.category1.setOnClickListener {
+            val intent = Intent(context, ContentListActivity::class.java)
+            intent.putExtra("category", "category1")
+            startActivity(intent)
+        }
+
+        // 카테고리2 버튼 클릭시 이벤트
+        binding.category2.setOnClickListener {
+            val intent = Intent(context, ContentListActivity::class.java)
+            intent.putExtra("category", "category2")
+            startActivity(intent)
+        }
+
         // 팁 버튼을 눌렀을 경우 팁화면으로 이동
         binding.homeTap.setOnClickListener {
             Log.d("TipFragment", "homeTap")
